@@ -1,0 +1,14 @@
+name: LPMCDiscovery
+main: me.Mentioum.LPMCDiscovery.LPMCDiscovery
+version: 0.1
+authors: [Mentioum]
+description: >
+             LPMCDiscovery - Helping you find your way back to the places you have been before.
+commands:
+  discovery:
+    description: Enables discovery compass mode!
+    usage: Type '/discovery' to toggle Compass Discovery Mode
+  disc:
+    description: Enables discovery compass mode!
+    usage: Type '/discovery' to toggle Compass Discovery Mode
+   
