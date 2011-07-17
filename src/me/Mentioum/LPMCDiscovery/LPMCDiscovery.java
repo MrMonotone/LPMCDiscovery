@@ -47,7 +47,7 @@ public class LPMCDiscovery extends JavaPlugin {
     directory = getDataFolder();
     database = new Mini(directory.getPath(), "playerlocations.mini");
     
-    pm.registerEvent(Type.PLAYER_JOIN, new Players(this), Priority.Low, this);
+    pm.registerEvent(Type.PLAYER_JOIN, new PlayerJoin(this), Priority.Low, this);
     
     }
 

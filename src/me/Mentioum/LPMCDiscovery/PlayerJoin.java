@@ -6,9 +6,9 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerListener;
 
-public class Players extends PlayerListener {
+public class PlayerJoin extends PlayerListener {
     public static LPMCDiscovery plugin;
-    public Players(LPMCDiscovery instance) {
+    public PlayerJoin(LPMCDiscovery instance) {
         plugin = instance;
     }
 
@@ -21,7 +21,7 @@ public class Players extends PlayerListener {
             Arguments lastPlayerEntry = plugin.database.getArguments(player.getDisplayName()); //reads the last entry for the "getDisplayName" and sets it to "lastPlayerEntry" for easy calling.
             
             if (lastPlayerEntry != null){ //if the lasPlayerEntry exists (i.e if they have logged in before then...
-                String lastPlayerLocation = "Last Player Co-ordinates: X: " + lastPlayerEntry.getValue("x") + "Y " + lastPlayerEntry.getValue("y") + "Z " + lastPlayerEntry.getValue("z"); //get the following data information from their entry and set it as "lastPlaterLocation"
+                String lastPlayerLocation = "Your Last Login Co-ordinates: X: " + lastPlayerEntry.getValue("x") + "Y " + lastPlayerEntry.getValue("y") + "Z " + lastPlayerEntry.getValue("z"); //get the following data information from their entry and set it as "lastPlaterLocation"
                 player.sendMessage(lastPlayerLocation); //send the player their last login location.
             }
             Arguments entry = new Arguments(player.getDisplayName());
