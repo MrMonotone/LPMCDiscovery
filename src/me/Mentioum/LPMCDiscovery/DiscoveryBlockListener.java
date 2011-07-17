@@ -12,6 +12,7 @@ class DiscoveryBlockListener extends BlockListener {
         plugin = instance;
     }
 
+    @Override
     public void onBlockPlace (BlockPlaceEvent event) {
         Player player = event.getPlayer();
         Block block = event.getBlockPlaced();
