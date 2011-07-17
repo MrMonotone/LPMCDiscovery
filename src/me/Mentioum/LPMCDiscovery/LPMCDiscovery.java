@@ -2,6 +2,8 @@ package me.Mentioum.LPMCDiscovery;
 
 //Imports
 
+import com.mini.Mini;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.logging.Logger;
@@ -22,7 +24,11 @@ public class LPMCDiscovery extends JavaPlugin {
     public HashMap<Player, ArrayList<Block>> discoveryUsers = new HashMap(); //Defines HashMap
     public HashMap<Player, Boolean> debugees = new HashMap<Player, Boolean>(); //Defines HashMap Debugees
     public static String mainDirectory = "plugins/LPMCDiscovery";//Set main directory for easy reference
+    private PluginManager manager;
+    private File directory;
+    public Mini database;
     
+   
     
     
     @Override
@@ -38,11 +44,15 @@ public class LPMCDiscovery extends JavaPlugin {
     pm.registerEvent(Type.BLOCK_PLACE, this.blocklistener, Priority.Normal, this);
     PluginDescriptionFile pdfFile = this.getDescription();
     LPMCDiscovery.logger.info( pdfFile.getName() + " V" + pdfFile.getVersion() + " by " + pdfFile.getAuthors() + " is enabled");
-   
-    }
+    directory = getDataFolder();
+    database = new Mini(directory.getPath(), "playerlocations.mini");
     
+    pm.registerEvent(Type.PLAYER_JOIN, new Players(this), Priority.Low, this);
+    
+    }
+
+    @Override
     public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args){
-        String[] split = args;
         if (commandLabel.equalsIgnoreCase("discovery")
                 || commandLabel.equalsIgnoreCase("disc")){
             toggleVision ((Player) sender);
